@@ -1,38 +1,44 @@
 import "./App.css";
-import ContactList from "./components/ContactList/ContactList";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactForm from "./components/ContactForm/ContactForm";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { fetchContacts } from "./redux/contactsOps";
-import { selectError, selectLoading } from "./redux/contactsSlice";
-import toast, { Toaster } from "react-hot-toast";
+import { Suspense, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import Layout from "./components/Layot/Layot";
+import RegistrationForm from "./pages/Registration/Registration";
+import LoginForm from "./pages/Login/Login";
+import Contacts from "./pages/Contacts/Contacts";
 
 function App() {
-  const dispatch = useDispatch();
-  const loading = useSelector(selectLoading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts())
-      .unwrap()
-      .catch((e) => {
-        toast.error("Sorry, we were unable to access your contact list...");
-        console.log(e);
-      });
-  }, [dispatch]);
-
   return (
     <div>
-      <h1>Phonebook</h1>
-      <ContactForm />
+      <Layout>
+        <Suspense fallback={<h2>Loading...</h2>}>
+          <Routes>
+            <Route path="/" element={<Home></Home>}></Route>
+            <Route
+              path="/register"
+              element={<RegistrationForm></RegistrationForm>}
+            ></Route>
+            <Route path="/login" element={<LoginForm></LoginForm>}></Route>
+            <Route path="/contacts" element={<Contacts></Contacts>}></Route>
+          </Routes>
+        </Suspense>
+      </Layout>
+
+      {/* <ContactForm />
       <SearchBox />
       {loading && <p>Loading...</p>}
       {error && <p>Something went wrong! Please try again.</p>}
       <ContactList />
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} /> */}
     </div>
   );
 }
 
 export default App;
+
+// Для обгортки компонентів публічних і приватних сторінок використовуйте компоненти PrivateRoute та RestrictedRoute.
+
+// / - маршрут домашньої сторінки додатка, де можна розмістити інформацію про додаток чи його розробника. Рендерить компонент Home.
+// /register - публічний маршрут для реєстрації нового користувача, на якому рендериться компонент сторінки Registration з формою RegistrationForm.
+// /login - публічний маршрут для логіна існуючого користувача, на якому рендериться компонент сторінки Login з формою LoginForm.
+// /contacts - приватний маршрут для роботи зі списком контактів користувача, на якому рендериться компонент сторінки Contacts.

@@ -1,3 +1,16 @@
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgb(59, 59, 59);
+}
+
+a {
+  text-decoration: none;
+  color: rgb(59, 59, 59);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+a:hover,
+a:focus {
+  color: rgb(180, 158, 200);
 }

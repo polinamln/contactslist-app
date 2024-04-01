@@ -1,0 +1,11 @@
+.div {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: solid 1px rgb(209, 209, 209);
+}
+
+.title {
+  text-align: center;
+}
