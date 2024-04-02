@@ -1,22 +1,25 @@
+import { useSelector } from "react-redux";
 import AuthNav from "../AuthNav/AuthNav";
 import Navigation from "../Navigation/Navigation";
 import css from "./AppBar.module.css";
+import { selectIsLoggedIn } from "../../redux/auth/selectors";
+import UserMenu from "../UserMenu/UserMenu";
 
 export default function AppBar() {
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <div>
       <h1 className={css.title}>Phonebook</h1>
       <div className={css.div}>
         <Navigation className={css.link}></Navigation>
-        <AuthNav className={css.link}></AuthNav>
+        {isLoggedIn ? (
+          <UserMenu></UserMenu>
+        ) : (
+          <AuthNav className={css.link}></AuthNav>
+        )}
       </div>
     </div>
   );
 }
-//   {
-//     isLoggedIn ? <UserMenu /> : <AuthNav />;
-//   }
-
-// Компонент AppBar має рендерити компонент навігації Navigation та AuthNav. Водночас авторизований користувач замість AuthNav має бачити UserMenu.
 
 // Обов'язково очищайте колекцію контактів у стані при логауті користувача.

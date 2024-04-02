@@ -14,3 +14,9 @@ a:hover,
 a:focus {
   color: rgb(180, 158, 200);
 }
+
+p,
+h1,
+h2 {
+  margin: 0;
+}
