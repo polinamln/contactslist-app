@@ -20,3 +20,8 @@ h1,
 h2 {
   margin: 0;
 }
+
+.load {
+  text-align: center;
+  margin-top: 90px;
+}
