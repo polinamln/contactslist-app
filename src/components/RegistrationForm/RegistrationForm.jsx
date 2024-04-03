@@ -2,6 +2,7 @@ import { Field, Form, Formik } from "formik";
 import css from "./RegistrationForm.module.css";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
+import { Link } from "react-router-dom";
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ export default function RegistrationForm() {
   };
 
   return (
-    <div>
+    <div className={css.div}>
       <Formik
         onSubmit={handleSubmit}
         initialValues={{
@@ -44,6 +45,9 @@ export default function RegistrationForm() {
           </button>
         </Form>
       </Formik>
+      <Link className={css.link} to="/login">
+        Log in
+      </Link>
     </div>
   );
 }

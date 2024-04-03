@@ -1,0 +1,16 @@
+.link {
+  background-color: rgb(235, 235, 235);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: lighter;
+  width: 80px;
+}
+
+.div {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
