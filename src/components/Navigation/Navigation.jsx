@@ -12,15 +12,13 @@ export default function Navigation() {
 
   return (
     <nav className={css.nav}>
+      <NavLink className={isActive} to="/">
+        Home
+      </NavLink>
       {isLoggedIn && (
-        <div>
-          <NavLink className={isActive} to="/">
-            Home
-          </NavLink>{" "}
-          <NavLink className={isActive} to="/contacts">
-            Contacts
-          </NavLink>
-        </div>
+        <NavLink className={isActive} to="/contacts">
+          Contacts
+        </NavLink>
       )}
     </nav>
   );

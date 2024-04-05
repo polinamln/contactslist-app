@@ -1,4 +1,4 @@
-import HomePageText from "../../components/HomePageText/HomePageText";
+import HomePageText from "../components/HomePageText/HomePageText";
 
 export default function Home() {
   return (

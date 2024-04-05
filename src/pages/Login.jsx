@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import LoginForm from "../../components/LoginForm/LoginForm";
-import css from "./Login.module.css";
+import LoginForm from "../components/LoginForm/LoginForm";
 
 export default function Login() {
   return (
-    <div className={css.div}>
+    <div className="divLogin">
       <h1>Please log in</h1>
       <LoginForm></LoginForm>
-      <Link className={css.link} to="/register">
+      <Link className="linkLogin" to="/register">
         Registration
       </Link>
     </div>
